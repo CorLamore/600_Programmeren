@@ -1,0 +1,26 @@
+{% extends "base.html" %} <!---Extending the base template -->
+{% block content %} <!-- Defining the content block -->
+    <h1>Movies</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr> <!-- Table headers -->
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Stock</th>
+                <th>Daily Rate</th>
+            </tr>
+        </thead>
+        <tbody> <!-- Loop through the movies and display each one in a table row-->
+            {% for movie in movies %}
+                <tr>
+                    <td>
+                       <a href="{% url 'movies:detail' movie.id %}">{{ movie.title }}</a> <!-- Link to movie detail page -->
+                    </td>
+                    <td>{{ movie.genre }}</td>
+                    <td>{{ movie.number_in_stock }}</td>
+                    <td>{{ movie.daily_rate }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
